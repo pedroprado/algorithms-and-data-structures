@@ -1,7 +1,6 @@
 const LinkedList = require('./linked_list');
-// import LinkedList from './linked_list';
 
-describe('Linked List', () => {
+describe('Linked List tests', () => {
     describe('Push operation: should insert to the end (tail) of the list', () => {
         it('Push to new list: head sould be equals tail', () =>{
             const list = new LinkedList();
@@ -145,10 +144,185 @@ describe('Linked List', () => {
         });     
     });
     describe('Set operation: should update one desired Node', () => {
-        it('Set to non existing node: should return false', () => {
+        it('Set to non existing node (invalid index): should return false', () => {
+            const list = new LinkedList();
+            list.push(1); 
+            list.push(2);
 
+            const setted =  list.set(3, 5);
+
+            expect(setted).toBe(false);
+            console.log(list.length)
+        });
+        it('Set to a existing node (valid index): should return true', () => {
+            const list = new LinkedList();
+            list.push(1); 
+            list.push(2);
+
+            const setted =  list.set(1, 5);
+
+            expect(setted).toBe(true);
+            expect(list.head.next.data).toBe(5);
         });
     });
-   
+    describe('Insert operation', () => {
+        it('should return false for an invalid index, less than 0', () =>{
+            const list = new LinkedList();
+            list.push(1);  //head
+            list.push(2);
+            list.push(3);
+            list.push(100);  //tail
 
+            const inserted = list.insert(-1, 'Hello');
+
+            expect(inserted).toBe(false);
+        });
+        it('should return false for an invalid index, greater than length', () =>{
+            const list = new LinkedList();
+            list.push(1);  //head
+            list.push(2);
+            list.push(3);
+            list.push(100);  //tail
+
+            const inserted = list.insert(5, 'Hello');
+
+            expect(inserted).toBe(false);
+            expect(list.length).toBe(4);
+        });
+        it('should insert in the head, return true', () =>{
+            const list = new LinkedList();
+            list.push(1);  //head, index 0
+            list.push(2);
+            list.push(3);
+            list.push(100);  //tail
+
+            const inserted = list.insert(0, 'Hello');
+
+            expect(inserted).toBe(true);
+            expect(list.head.data).toBe('Hello');
+            expect(list.length).toBe(5);
+        });
+        it('should insert in the tail, return true', () =>{
+            const list = new LinkedList();
+            list.push(1);  //head
+            list.push(2);
+            list.push(3);
+            list.push(4);
+            list.push(100);  //tail, index 4
+
+            const inserted = list.insert(5, 'Hello');
+
+            expect(inserted).toBe(true);
+            expect(list.tail.data).toBe('Hello');
+            expect(list.length).toBe(6);
+        });
+        it('should insert in a given valid index, return true', () =>{
+            const list = new LinkedList();
+            list.push(1);  //head
+            list.push(3);  //index 1
+            list.push(100);  //tail
+
+            const inserted = list.insert(1, 'Hello');
+
+            expect(inserted).toBe(true);
+            expect(list.head.next.data).toBe('Hello');
+            expect(list.length).toBe(4);
+        });
+    });
+    describe('Remove operation', () => {
+        it('should not remove for invalid index, index less than 0', ()=> {
+            const list = new LinkedList();
+            list.push(1);  //head
+            list.push(2);
+            list.push(3);
+            list.push(4);
+            list.push(100);  //tail, index 4
+
+            const removed = list.remove(-1);
+
+            expect(removed).toBe(undefined);
+            expect(list.length).toBe(5);
+        });
+        it('should not remove for invalid index, index >= length', ()=> {
+            const list = new LinkedList();
+            list.push(1);  //head
+            list.push(2);
+            list.push(100);  //tail, index 2
+
+            const removed = list.remove(3);
+            const removed2 = list.remove(4);
+
+            expect(removed).toBe(undefined);
+            expect(removed2).toBe(undefined);
+            expect(list.length).toBe(3);
+        });
+        it('should remove head, index 0', ()=> {
+            const list = new LinkedList();
+            list.push(1);  //head, index 0
+            list.push(2);
+            list.push(3);
+            list.push(4);
+            list.push(100);  //tail, index 4
+
+            const removed = list.remove(0);
+
+            expect(removed.data).toBe(1);
+            expect(list.length).toBe(4);
+            expect(list.head.data).toBe(2);
+        });
+        it('should remove tail for index length-1', ()=> {
+            const list = new LinkedList();
+            list.push(1);  //head, index 0
+            list.push(2);
+            list.push(3);
+            list.push(99);
+            list.push(100);  //tail, index 4
+
+            const removed = list.remove(4);
+
+            expect(removed.data).toBe(100);
+            expect(list.length).toBe(4);
+            expect(list.tail.data).toBe(99);
+        });
+        it('should remove element for a given valid index', ()=> {
+            const list = new LinkedList();
+            list.push(1);  //head, index 0
+            list.push(2);
+            list.push('holla');   //index 2
+            list.push(100);  //tail, index 3
+
+            const removed = list.remove(2);
+
+            expect(removed.data).toBe('holla');
+            expect(list.length).toBe(3);
+            expect(list.head.next.next.data).toBe(100);
+        });
+    });
+    describe('Reverse operation: should reverse the linked list direction', () => {
+        it('Should reverse', () => {
+            const list = new LinkedList();
+            list.push(1);  //head
+            list.push(2);
+            list.push(3);
+            list.push(100);  //tail
+
+            const reversed = list.reverse();
+
+            expect(reversed.head.data).toBe(100);
+            expect(reversed.head.next.data).toBe(3);
+            expect(reversed.head.next.next.data).toBe(2);
+            expect(reversed.tail.data).toBe(1);
+        });
+        it('Should reverse 2', () => {
+            const list = new LinkedList();
+            list.push(1);  //head
+            list.push(100);  //tail
+
+            const reversed = list.reverse();
+
+            expect(reversed.head.data).toBe(100);
+            expect(reversed.head.next.data).toBe(1);
+            expect(reversed.tail.data).toBe(1);
+        });
+    });
 });

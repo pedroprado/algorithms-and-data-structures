@@ -111,7 +111,7 @@ class LinkedList{
         return this;
     }
 
-    //GET: given and index return the node from that position
+    //GET: given and index return the node (the reference!) from that position
     //Do not search if the index is less zero or greater than length of the list
     //Loop through the list to find the element of the given index, and return the element
     get(index){
@@ -124,7 +124,6 @@ class LinkedList{
         };
 
         return current;
-
     }
 
     //SET: set new Data to a desired Node, which is found by its index
@@ -137,9 +136,98 @@ class LinkedList{
             return true;
         }
         return false;
+    }
 
+    //INSERT: insert a new node to the list. The new node should be inserted in a given index.
+    //The function should receive a data and an index;
+    //If the index < 0 or index > length, return false (did not insert)
+    //If the index is the head index (0), just UNSHIFT the element
+    //If the index is the tail+1 index (length), just PUSH the element
+    //Otherwise, find the elements:
+    //  1. of index position (GET(index)), and point the new node (new_node.next) to that element
+    //  2. of the index-1 position (use GET(index-1)), and point that element to new_node
+    //Return true
+    insert(index, data){
+        if(index < 0 || index > this.length) return false;
+        else{
+            if(index === 0) this.unshift(data);
+            else if(index === this.length) this.push(data);
+            else{
+                const newNode = new Node(data);
+                const previousNode = this.get(index-1);
+                newNode.next = previousNode.next;
+                previousNode.next = newNode;
+                this.length++;
+            }    
+            return true;
+        }    
+    }
 
+    //REMOVE: removes a node from a specific position (index)
+    //Given and index, find the item (node) to be removed (using GET function), in the index-1 (previous node)
+    //Set pointer to that item.next (temp)
+    //set the item.next to be the temp.next (== item.next.next)
+    //Set the temp.next to null
+    //Decrement the length;
+    //Return temp
+    //Edge cases:
+    //If the index < 0 or index >= length, return undefined (we cannot remove and item from length index, there is no item!);
+    //If index = length-1, pop the item (pop())
+    //If index = head (index 0), shift the list (shift())
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined;
+        else{
+            if(index === 0) return this.shift();
+            else if(index === this.length-1) return this.pop();
+            else{
+                const previousNode = this.get(index-1);
+                const removed = previousNode.next;
+                previousNode.next = removed.next;
+                removed.next = null;
+                this.length--;
+                return removed;
+            }
+        }
+    }
+
+    //REVERSE: invert the linked list direction. Head becomes tail, tail becomes head.
+    //Loop through the list, making each item next prop to be the last item
+    //PSEUDOCORE:
+    //Swap head and tail
+    //Create a pointer called node that points to tail (this is the current node!)
+    //Create a pointer called next, that points to node.next
+    //Create a ponter called prev, that points to node's previous (it will be null in the 1st iteration), and move node = next (node.next)
+    //Make node.next = prev
+    //Make prev = node, node = next, next = next.next
+    reverse(){
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+
+        let next = node.next;
+        let prev = null;
+
+        for(let i=0; i<this.length; i++){
+            if(next === null){
+                node.next = prev;
+                return this;
+            }
+            node.next = prev;
+            prev = node;
+            node = next;
+            next = node.next;
+        }
+        return this;
     }
 }
+
+
+//Time Complexity:
+//                Insetion         Removal  
+//beginning      1 (unshift)     1 (shift)      
+//end            1 (push)        1...n  (pop)       
+
+//Searching and Accessing = O(n)
+//Linked lists are not good for searching, because they are not indexed! So, no random access!
 
 module.exports = LinkedList;
