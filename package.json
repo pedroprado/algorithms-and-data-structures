@@ -7,12 +7,12 @@
     "jest": "^26.0.1"
   },
   "scripts": {
-    "test-dev": "jest --watchAll=false"
+    "test": "jest --watchAll=false"
   },
   "jest": {
     "clearMocks": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
+      "/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/"
     ],
     "coverageThreshold": {

@@ -23,12 +23,12 @@ class LinkedList{
         this.length = 0;
     };
 
-    //Add data to the end (TAIL) of the list: PUSH
+    //PUSH:Add data to the end (TAIL) of the list
     //If the list is empty we set the head ant the tail: HEAD == TAIL == NEW NODE
     //If it is not empty (it already has a tail), the element is pushed to the TAIL
     //For setting the element to the TAIL: set the next prop of the Tail to reference to the newly created Node
     //Increment the length
-    pushToEnd(data){
+    push(data){
         const new_node = new Node(data);
         if(this.length === 0){
             this.head = this.tail = new_node;
@@ -36,36 +36,42 @@ class LinkedList{
             this.tail.next = new_node;
             this.tail = new_node; 
         }
-        this.length ++;
+        this.length++;
         return this;
     }
 
-    //Remove data from the end (TAIL) of the list: POP
+    //POP: Remove data from the end (TAIL) of the list
     //Search the list for the 2nd to last node (helper method: Traverse) (if there is no nodes, return undefined)
     //Set the 2nd to last node next prop to be null
     //Update the tail to point to the 2nd to last node
     //Decrement the list length by 1
     //Return the removed element
     pop(){
-        if(this.length === 0 ) return undefined;
-
         let current = this.head;
+
+        if(this.length === 0 ) return undefined;
+        
+        if(this.length === 1){
+            this.head = null;
+            this.tail = null;
+            this.length --;
+
+            return current;
+        }
+
         while(current.next.next !== null){
-            current = current.next.next;
+            current = current.next;
         }
 
         let poped = current.next;
         current.next = null;
         this.tail = current;
         this.length--;
-        if(this.length === 0){
-            this.head = null;
-            this.tail = null;
-        }
+   
         return poped;
     }
 
-    //SHIFTING: remove an element from the beginning (HEAD) ot he List
+    //SHIFTING: remove an element from the beginning (HEAD) ot the List
     //If there is no nodes, return undefined
     //Store the head in a variable, and set head to be the next (head.next)
     //Decrement the length
@@ -83,6 +89,56 @@ class LinkedList{
         } 
 
         return current;
+    }
+
+    //UNSHIFTING: add an element to the beginning (HEAD) of the list
+    //If there is no head (empty list) set the head (and the tail) to the new node
+    //Else, set the next prop of the newly created node to the current Head
+    //Set the head to point to the newly created node
+    //Increment the length
+    //Return the list
+    unshift(data){
+        const new_node = new Node(data);
+
+        if(this.length === 0) {
+            this.head = new_node;
+            this.tail = new_node;
+        }else{
+            new_node.next = this.head;
+            this.head = new_node;
+        }
+        this.length++;
+        return this;
+    }
+
+    //GET: given and index return the node from that position
+    //Do not search if the index is less zero or greater than length of the list
+    //Loop through the list to find the element of the given index, and return the element
+    get(index){
+        if(index < 0 || index >= this.length) return null;
+
+        let current = this.head;
+
+        for(var i = 0; i < index; i++){
+            current = current.next;
+        };
+
+        return current;
+
+    }
+
+    //SET: set new Data to a desired Node, which is found by its index
+    //Find the node using and index and the GET function
+    //Update the data of that Node
+    set(index, data){
+        const node = this.get(index);
+        if(node !== null) {
+            node.data = data;
+            return true;
+        }
+        return false;
+
+
     }
 }
 
