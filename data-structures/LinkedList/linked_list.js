@@ -118,15 +118,15 @@ class LinkedList{
     //Do not search if the index is less zero or greater than length of the list
     //Loop through the list to find the element of the given index, and return the element
     get(index){
-        if(index < 0 || index >= this.length) return null;
-
-        let current = this.head;
-
-        for(var i = 0; i < index; i++){
-            current = current.next;
-        };
-
-        return current;
+        if(index >= 0 && index <= this.length-1){
+            let current = this.head;
+            for(var i = 0; i < index; i++){
+                current = current.next;
+            };
+            return current;
+        }
+        return null;
+       
     }
 
     //SET: set new Data to a desired Node, which is found by its index
@@ -151,8 +151,7 @@ class LinkedList{
     //  2. of the index-1 position (use GET(index-1)), and point that element to new_node
     //Return true
     insert(index, data){
-        if(index < 0 || index > this.length) return false;
-        else{
+        if(index >= 0 && index <= this.length){
             if(index === 0) this.unshift(data);
             else if(index === this.length) this.push(data);
             else{
@@ -163,7 +162,8 @@ class LinkedList{
                 this.length++;
             }    
             return true;
-        }    
+        }
+        return false;
     }
 
     //REMOVE: removes a node from a specific position (index)
@@ -178,8 +178,7 @@ class LinkedList{
     //If index = length-1, pop the item (pop())
     //If index = head (index 0), shift the list (shift())
     remove(index){
-        if(index < 0 || index >= this.length) return undefined;
-        else{
+        if( index >= 0 & index <= this.length-1){
             if(index === 0) return this.shift();
             else if(index === this.length-1) return this.pop();
             else{
@@ -191,6 +190,7 @@ class LinkedList{
                 return removed;
             }
         }
+        return undefined;
     }
 
     //REVERSE: invert the linked list direction. Head becomes tail, tail becomes head.
@@ -228,9 +228,9 @@ class LinkedList{
 //Time Complexity:
 //                Insetion         Removal  
 //beginning      1 (unshift)     1 (shift)      
-//end            1 (push)        1...n  (pop)       
+//end            1 (push)        1...N  (pop)       
 
-//Searching and Accessing = O(n)
+//Searching and Accessing = O(N)
 //Linked lists are not good for searching, because they are not indexed! So, no random access!
 
 module.exports = LinkedList;
