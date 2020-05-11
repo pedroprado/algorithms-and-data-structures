@@ -49,46 +49,49 @@ class LinkedList{
     pop(){
         let current = this.head;
 
-        if(this.length === 0 ) return undefined;
-        
-        if(this.length === 1){
-            this.head = null;
-            this.tail = null;
-            this.length --;
-
-            return current;
+        if(this.length !== 0 ){
+            if(this.length === 1){
+                this.head = null;
+                this.tail = null;
+                this.length --;
+    
+                return current;
+            }
+    
+            while(current.next.next !== null){
+                current = current.next;
+            }
+    
+            let poped = current.next;
+            current.next = null;
+            this.tail = current;
+            this.length--;
+       
+            return poped;
         }
 
-        while(current.next.next !== null){
-            current = current.next;
-        }
-
-        let poped = current.next;
-        current.next = null;
-        this.tail = current;
-        this.length--;
-   
-        return poped;
+        return undefined;
     }
 
     //SHIFTING: remove an element from the beginning (HEAD) ot the List
     //If there is no nodes, return undefined
     //Store the head in a variable, and set head to be the next (head.next)
     //Decrement the length
+    //If the element was the only one (single element list), make the tail to be null
     //Return the removed value
     shift(){
-
-        if(this.length === 0) return undefined;
-
-        let current = this.head;
-        this.head = this.head.next;
-        current.next = null;
-        this.length--;
-        if(this.length === 0){
-            this.tail = null;
+        if(this.length !== 0){
+            let current = this.head;
+            this.head = this.head.next;
+            current.next = null;
+            this.length--;
+            if(this.length === 0){
+                this.tail = null;
+            } 
+    
+            return current;
         } 
-
-        return current;
+        return undefined;
     }
 
     //UNSHIFTING: add an element to the beginning (HEAD) of the list

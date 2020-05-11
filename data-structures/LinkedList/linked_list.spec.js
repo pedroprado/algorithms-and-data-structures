@@ -152,7 +152,6 @@ describe('Linked List tests', () => {
             const setted =  list.set(3, 5);
 
             expect(setted).toBe(false);
-            console.log(list.length)
         });
         it('Set to a existing node (valid index): should return true', () => {
             const list = new LinkedList();
