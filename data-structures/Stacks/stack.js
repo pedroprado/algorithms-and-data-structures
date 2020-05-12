@@ -1,6 +1,6 @@
 
 //STACK is a collection of data
-//LIFO: Last In First Out: the LAST thing to be inserted is the FIRST to be removed fro mthe stack
+//LIFO: Last In First Out: the LAST thing to be inserted is the FIRST to be removed from the stack
 
 //Where Stack is used?
 //1.Managing functions invocations: StackTrace
@@ -10,8 +10,8 @@
 
 //STACK is a CONCEPT. There are several ways to implement it.
 //TIME COMPLEXITY:
-//Removing and Adding to a Stack SHOULD BE CONSTANT TIME (O(1))
-//Searching and Accessing = O(N) (there is no index)
+//Removing and Adding to a Stack SHOULD BE CONSTANT TIME => O(1)
+//Searching and Accessing => O(N)
 
 //STACK using built-in Arrays
 //Remenber: in a built-in array, adding and removing to the start of the array is bad, because the array needs to reindex every item (O(N) complexity)!
