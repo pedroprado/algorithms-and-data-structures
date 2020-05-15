@@ -23,7 +23,7 @@ describe('Binary Search Tree tests', () =>{
 
             expect(tree.root.data).toBe(10);
         });
-        it('should insert to the left', () => {
+        it('should insert lower value to the left', () => {
             const bst = new BST();
             bst.insert(10);
  
@@ -31,7 +31,7 @@ describe('Binary Search Tree tests', () =>{
  
             expect(tree.root.left.data).toBe(8);
         });
-        it('should insert to the rigth', () => {
+        it('should insert higher value to the rigth', () => {
             const bst = new BST();
             bst.insert(10);
 
@@ -39,7 +39,7 @@ describe('Binary Search Tree tests', () =>{
 
             expect(tree.root.right.data).toBe(12);
         });
-        it('should not insert already inserted value', () => {
+        it('should not insert value that already exists in the tree', () => {
             const bst = new BST();
             bst.insert(10);
 
