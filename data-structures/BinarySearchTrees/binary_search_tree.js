@@ -69,7 +69,7 @@ class BinarySearchTree{
         }else{
             let current = this.root;
             while(true){
-                if( data === current.data) return undefined;
+                if(data === current.data) return undefined;
                 if(data < current.data){
                     if(current.left === null){
                         current.left = newNode;
@@ -99,7 +99,7 @@ class BinarySearchTree{
         if(this.root !== null){
             let current = this.root;
             while(true){
-                if( current === null){ 
+                if(current === null){ 
                     return null;
                 }else{
                     if(data === current.data){ 
@@ -136,6 +136,7 @@ class BinarySearchTree{
         }   
         return false;
     }
+   
 }
 
 //TIME COMPLEXITY:
