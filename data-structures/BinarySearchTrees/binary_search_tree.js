@@ -141,9 +141,9 @@ class BinarySearchTree{
 
 //TIME COMPLEXITY:
 //INSERTING : Log N    not guaranted
-//SEARCHING: Log N     not guaranteds
+//DELETING AND SEARCHING: Log N    *** not guaranted
 
-//there are some configurations of the BST that could be considered a linked list.
+//**there are some configurations of the BST that could be considered a linked list.
 //in those cases, the time complexity is N
 
 module.exports = BinarySearchTree;

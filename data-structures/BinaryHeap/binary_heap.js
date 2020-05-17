@@ -134,4 +134,12 @@ class BinaryHeap{
     }
 }
 
+//TIME COMPLEXITY
+//INSERTION: Log N => Inserting is a PUSH OPERATION IN AN ARRAY (which is O(1)). The Bubble UP is Log n
+//DELETION: Log N => Removing is a POP OPERATION IN AN ARRAY (which is O(1) ). The Bubble DOWN is Log n
+
+//SEARCHING: N  (There is no guaranted order between siblings!)
+
+//Binary Heaps cannot have strange configurations. The adding element is always to the left!
+
 module.exports = BinaryHeap;
