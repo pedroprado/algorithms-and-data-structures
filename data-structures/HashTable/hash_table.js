@@ -102,4 +102,13 @@ class HashTable{
 //Deletion = O(1)
 //Access = O(1)
 
+
+//Recap
+//Hash tables are collections of key-value pairs
+//They can find values, add values, and remove values very quickly, given a key  (O(1) time complexity)
+//They work transforming a human readable key into a number key, using a Hashing Function, and storing data in a Large Array
+//The Hashing Function should: be fast, distribute keys uniformly and be deterministic
+//When two or more keys are Hashed to the same value, we have Collisions
+//There are two main strategies to deal with Collisions: Separate Chainning (store data together) and Linear Probing
+
 module.exports = HashTable;
