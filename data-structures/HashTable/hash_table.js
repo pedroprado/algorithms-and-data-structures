@@ -96,4 +96,10 @@ class HashTable{
 //When we get, we get ONLY the FIRST element inserted with that key
 //This is a SIMPLE implementation
 
+
+//TIME COMPLEXITY: Constant=> all operations are indexed
+//Insert = O(1)     
+//Deletion = O(1)
+//Access = O(1)
+
 module.exports = HashTable;
