@@ -1,0 +1,51 @@
+
+//GRAPH DEFINITION:
+//Data structure that consists of Nodes conected to other Nodes  (Nodes + Connections);
+//A TREE is a Type of Graph where :
+//           --- there is on TOP MOST NODE (ROOT), and each Parent connect to its Children (in a unidirection manner)
+//           --- there is ONLY ONE connection betwenn TWO NODES
+
+//USES
+//Clutering images
+//Map => google maps connects the point between one desided location and the current location. Each point in the path is a node
+//Web => nodes showing the connection among pages
+//Recommendations => "people whose have played Borderlands also played Halo"
+
+//GRAPHS TERMINOLOGY
+//Nodes       =    VERTEX (V)
+//Connections =    EDGE   (E)
+
+//UNDIRECTED GRAPH
+//EDGEs have two way connection (bidirection traversion)
+
+//DIRECTED GRAPH
+//EDGEs have only one direction!
+
+//WEIGHTED GRAPH x UNWEIGHTED
+//Weighted: edges have values (weights)        ----> usefull for determining the shortest path in a map!
+//Unweighted: edges have not values (weights)
+
+
+//Implementation: Adjacency Matrix and Adjacency List
+
+//Adjacency Matrix                            Adjacency List
+//More space =   O(V^2)                      Less Space = O(V+E)
+//Slower to iterate over Edges = O(X)        Faster to iterate over edges= O(E)
+//**X = max between V and E
+//Faster to Query edges = O(1)               Slower to query  edges= O(V+E)
+
+
+//Most of data dont have Homogeneous number of Connections (EDGES) => for these cases the best implementation is Adjacency List 
+
+
+GRAPH TRAVERSAL
+
+Traversing a Graph is the same as visiting EVERY vertex (node) in a Graph!
+
+In a Graph there is not guarantee there is ONLY ONE path for vising all the vertices;
+
+Use Cases: 
+-Peer to Peer
+-Web crawlers
+-Finding shortest path
+-Finding closes Recommendations

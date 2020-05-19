@@ -3,13 +3,13 @@
 //Algorithms that traverse a tree looking for some value: it should visit all the nodes
 
 //Used for Trees that are not sorted (sorte tress can use binary search tree!)
-
-//BFS
+ 
+//BFS  ->> USES QUEUE
 //BREADTH FIRST SEARCH  (Busca em Largura)
 //Search horizontally
 //Visits all the nodes in a given level, before going to the next level
 
-//PSEUDO CODE
+//PSEUDO CODE 
 //1.Create a queue that stores the elements to be visited             (queue)
 //2.Create a list that stores the elements that were already visited (visited)
 //3.Start adding the root node to queue;
@@ -36,7 +36,7 @@ const breadthFirstSearch = tree => {
 };
 
 
-//DFS
+//DFS   -->USUES STACK
 //DEPTH FIRST SEARCH (Busca em Profundidade)
 //Search vertically
 //Visit all the nodes to the left, before to look to the right
