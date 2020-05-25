@@ -1,5 +1,6 @@
 //UNDIRECTED GRAPH
-//using Adjacency List
+//using Adjacency List = List containning Vertices and its Edges
+
 class Graph {
   constructor() {
     this.adjacencyList = {};
@@ -48,13 +49,12 @@ class Graph {
     return this;
   };
 
-  //DFS for graphs:
-  //PSEUDOCODE
+  //DFS for graphs: Search for a Vertex, then search again for its first Edge. Children before siblingss
+  //PSEUDOCODE (for adjacency List )
   //1.Start from some vertex
   //2.Add the vertex to the result list, and mark it as visited
+  //**Marking as visited: using a object, map that Vertex as visited (true) */
   //3.For each neighbor in vertex's neighbors: check if it is not visited and, and if its not, repeat step 2
-  //EDGE CASES:
-  //Return if alredy visited
   depthFirstSearchRecursive = (vertex) => {
     const results = [];
     const visited = {};
@@ -67,7 +67,7 @@ class Graph {
         for (let i = 0; i < neighbors.length; i++) {
           const neighbor = neighbors[i];
           if (!visited[neighbor]) {
-            return traverse(neighbor);
+             traverse(neighbor);
           }
         }
       }
@@ -78,9 +78,54 @@ class Graph {
     return results;
   };
 
-  depthFirstSearchIterative = (vertex) => {};
+  //DFS Iterative in Graphs => Use Stack
+  depthFirstSearchIterative = (vertex) => {
+    const results = [];
+    const visited = {};
+    const stack = [vertex];
 
-  breadthFirstSearchIterative = (vertex) => {};
+    while(stack.length !== 0){
+      const child = stack.pop();
+
+      if(!visited[child]){
+        results.push(child);
+        visited[child] = true;
+
+        const neighbors = this.adjacencyList[child];
+        for(let i =0; i< neighbors.length; i++){
+          const neighbor = neighbors[i];
+          if(!visited[neighbor]) stack.push(neighbor);
+        }
+      }
+    }
+
+    return results;
+  };
+
+  //BFS: search for all the edges of a Vertex, before advancing to the next Vertex. Siblings vefore Children.
+  //BFS Iterative in Graphs => Use Queue
+  breadthFirstSearchIterative = (vertex) => {
+    const results = [];
+    const visited = {};
+    const queue = [vertex];
+
+    while(queue.length !== 0){
+      const child = queue.shift();
+
+      if(!visited[child]){
+        results.push(child);
+        visited[child] = true;
+
+        const neighbors = this.adjacencyList[child];
+        for(let i =0; i< neighbors.length; i++){
+          const neighbor = neighbors[i];
+          if(!visited[neighbor]) queue.push(neighbor);
+        }
+      }
+    }
+
+    return results;
+  };
 }
 
 module.exports = Graph;

@@ -2,12 +2,12 @@
 //GRAPH DEFINITION:
 //Data structure that consists of Nodes conected to other Nodes  (Nodes + Connections);
 //A TREE is a Type of Graph where :
-//           --- there is on TOP MOST NODE (ROOT), and each Parent connect to its Children (in a unidirection manner)
-//           --- there is ONLY ONE connection betwenn TWO NODES
+//           --- there is one TOP MOST NODE (ROOT), and each Parent connect to its Children (in a unidirection manner)
+//           --- there is ONLY ONE connection between TWO NODES
 
-//USES
+//USES CASES
 //Clutering images
-//Map => google maps connects the point between one desided location and the current location. Each point in the path is a node
+//Maps => google maps connects the point between one desided location and the current location. Each point in the path is a node
 //Web => nodes showing the connection among pages
 //Recommendations => "people whose have played Borderlands also played Halo"
 

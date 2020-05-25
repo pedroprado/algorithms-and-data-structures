@@ -1,0 +1,32 @@
+What is it?
+1.Finding an optimal program: optimal solution breaking down a problem into smaller, easy subproblems that are calculated only once!
+
+When to use it?
+When we have problems with TWO THINGS:
+1.Optimal Substructure  AND
+2.Overlapping Subproblems
+
+1.Optimal Substructure
+-Optimal Solution is the COMBINATION OF THE Optimal Solutions of its Subproblems
+-EX: Suppose the shortest path A to D, SP(A,D), is:  A->B->C->D
+
+            A --->  B --->  D
+                    |  \    ^
+                    |   \   | 
+                    V    _| |  
+                    E -->  C
+
+-If the shortest path SP(A,D) is the composition of: 
+     SP(A,D) = SP(A,B) + SP(B,C) + SP(C,D)
+  then it is called an Optimal Substructure.
+
+2.Overlapping subproblems: 
+-subproblems that overlap
+-an overlapped subproblem is a problem where SOME OF its subproblems are calculated mored than once
+-Ex: Fibonacci
+    -Fib(5) = Fib(4)+ Fib(3)     -- here we calculate Fib(3) twice
+    -Fib(4) = Fib(3) + Fib(2)
+-Non-overlapping Example: Merge Sort
+
+
+When there is Repetitions (Overlappings) whe can use Dynamic Programming to Improve Perfomance!

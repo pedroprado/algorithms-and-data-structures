@@ -70,7 +70,7 @@ describe('Graph Tests', ()=>{
         });
     });
     describe('Deoth First Search Test', () =>{
-        it('should find edges', () => {
+        it('should find edges recursively', () => {
             const graph = new Graph();
             graph.addVertex('A');
             graph.addVertex('B');
@@ -86,11 +86,72 @@ describe('Graph Tests', ()=>{
             graph.addEdge('D', 'E');
             graph.addEdge('D', 'F');
             graph.addEdge('E', 'F');
+            //      A
+            //    /   \
+            //   B     C
+            //   |     |
+            //   D --- E
+            //    \   /
+            //      E
 
-            
-            expect(graph.adjacencyList['Santos']).toStrictEqual(['Guaruja']);
-            expect(graph.adjacencyList['Guaruja']).toStrictEqual(['Santos']);
-            expect(graph.adjacencyList['Sao Vicente']).toStrictEqual([]);
+            const result = graph.depthFirstSearchRecursive('A');
+            expect(result).toStrictEqual([ 'A', 'B', 'D', 'E', 'C', 'F' ]);
+        });
+        it('should find edges iteratively', () => {
+            const graph = new Graph();
+            graph.addVertex('A');
+            graph.addVertex('B');
+            graph.addVertex('C');
+            graph.addVertex('D');
+            graph.addVertex('E');
+            graph.addVertex('F');
+
+            graph.addEdge('A', 'B');
+            graph.addEdge('A', 'C');
+            graph.addEdge('B', 'D');
+            graph.addEdge('C', 'E');
+            graph.addEdge('D', 'E');
+            graph.addEdge('D', 'F');
+            graph.addEdge('E', 'F');
+            //      A
+            //    /   \
+            //   B     C
+            //   |     |
+            //   D --- E
+            //    \   /
+            //      E
+
+            const result = graph.depthFirstSearchIterative('A');
+            expect(result).toStrictEqual([ 'A', 'C', 'E', 'F', 'D', 'B' ]);
+        });
+    });
+    describe('Breadth First Search', ()=>{
+        it('should find edges iteratively', () => {
+            const graph = new Graph();
+            graph.addVertex('A');
+            graph.addVertex('B');
+            graph.addVertex('C');
+            graph.addVertex('D');
+            graph.addVertex('E');
+            graph.addVertex('F');
+
+            graph.addEdge('A', 'B');
+            graph.addEdge('A', 'C');
+            graph.addEdge('B', 'D');
+            graph.addEdge('C', 'E');
+            graph.addEdge('D', 'E');
+            graph.addEdge('D', 'F');
+            graph.addEdge('E', 'F');
+            //      A
+            //    /   \
+            //   B     C
+            //   |     |
+            //   D --- E
+            //    \   /
+            //      E
+
+            const result = graph.breadthFirstSearchIterative('A');
+            expect(result).toStrictEqual([ 'A', 'B', 'C', 'D', 'E', 'F' ]);
         });
     });
 });
