@@ -1,0 +1,22 @@
+Algorithms
+Set of steps to accomplish some task or problem!
+
+How to improve?
+Devise a plan: Divde and Conquer
+Master commom problems
+
+
+Problem Solving
+1.Undestand
+    - Inputs, Outputs, contraints and Edge Cases, operations to be used
+2.Explore
+    - Use concrete examples to drive the solution (ex: Unit Tests)
+    - Explore the scenarios; edge cases, empty inputs, normal inputs, invalid inputs
+3.Break it down
+    - Write the steps you need to accomplish
+4.Solve/Simplify
+    - Problems that we dont know -> temporally simplify (solve a simpler problem)
+    - Solving a simpler problem can give you insight on how to solve harder
+5.Refactor
+    - Look back and improve the code!
+    - Improve: perfomance and stylistic ( for better and shorter reading)
