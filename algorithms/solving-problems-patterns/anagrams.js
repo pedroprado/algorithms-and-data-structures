@@ -11,7 +11,7 @@
 //anagram('anagram', 'nagaram')  => true
 //anagram('aaz', 'zza')  => false
 
-const anagram = (str1, str2) =>{
+const isAnagram = (str1, str2) =>{
 
     //should have same length
     if(str1.length !== str2.length) return false;
@@ -21,15 +21,24 @@ const anagram = (str1, str2) =>{
     const count1 = {};
     const count2 = {};
 
-    //frequencies of string one chars
-    for(let char in str1){
-        count1[char] = (count1[chart] || 0) +1;
+    //frequencies of string one' chars
+    for(let i=0; i<str1.length; i++){
+        count1[str1.charAt(i)] = (count1[str1.charAt(i)] || 0) +1;
     }
 
-    //frequencies of string two chars
-    for(let char in str2){
-        count2[char] = (count2[char] || 0) +1;
+    //frequencies of string two' chars
+    for(let j in str2){
+        count2[str2.charAt(j)] = (count2[str2.charAt(j)] || 0) +1;
     }
 
+    //they must be equals
+    for(let key in count1){
+        if(!(key in count2)) return false;
+        if( count2[key] !== count1[key]) return false;
+    }
 
+    return true;
+    
 };
+
+module.exports = {isAnagram};

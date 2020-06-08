@@ -1,7 +1,7 @@
 
 //FREQUENCY COUNTER
-//This pattern uses Objects of Sets to collect values/frequencies of values
-//This avoids O(n^2) nested loops
+//This pattern uses Objects or Sets to collect values/frequencies of values
+//This avoids O(n^2) time complexity of nested loops
 //***iteration over 2 arrays (2n) is better than 2 nested arrays (n^2)
 
 //Problem 1

@@ -1,0 +1,48 @@
+Algorithms
+Set of steps to accomplish some task or problem!
+
+How to improve?
+Devise a plan: Divide and Conquer
+Master commom problems
+
+
+Problem Solving
+1.Understand
+    - Inputs, Outputs, contraints and Edge Cases, operations to be used
+2.Explore
+    - Use concrete examples to drive the solution (ex: Unit Tests)
+    - Explore the scenarios; edge cases, empty inputs, normal inputs, invalid inputs
+3.Break it down
+    - Write the steps you need to accomplish
+4.Solve/Simplify
+    - Problems that we dont know -> temporally simplify (solve a simpler problem)
+    - Solving a simpler problem can give you insight on how to solve harder
+5.Refactor
+    - Look back and improve the code!
+    - Improve: perfomance and stylistic ( for better and shorter reading)
+
+
+Solving problems Patterns
+
+1.Frequency Counter
+This pattern uses Objects or Sets to collect values/frequencies of values
+This avoids O(n^2) time complexity of nested loops
+PS:iteration over 2 arrays (2n) is better than 2 nested arrays (n^2)
+Example: Functions that need to detect the same frequency of elements in more than on array
+
+2.Multiple Pointers 
+Very Efficient for solving problems with MINIMAL SPACE COMPLEXITY
+Creating pointers that corresponde to INDEX or POSITION
+Solve problems that need multiple references
+Example: SumZeroFunction => function that needs pointers on different sides of an array
+
+3.Sliding Window
+Usefull for keeping track of a SUBSET of data (substrings and subarrays)
+Creates a window from one position to another
+The window either increases or closes
+Example: maxSubarraySum => Start with a subarray and slides it, 
+summing elements to the right and subtracting to the left
+
+4.Divide and Conquer
+Very commom pattern used for reduced time complexity in searching and sorting Algorithms;
+It involves dividing a data set into smaller chunks and then repeating a process with a subset of data.
