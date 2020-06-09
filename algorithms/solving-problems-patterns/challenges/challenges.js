@@ -126,9 +126,25 @@ const isSubsequence = (str1, str2) => {
     return false;
 };
 
+//Given an array, find the max sum of a subarray arr of length n
+//SLIDING WINDOW PATTERN
+const maxSubarraySum = (arr, n) =>{
 
-const maxSubarraySum = (arr) =>{
+    let max = null;
+    let sum = 0;
+    for(let i=0; i<n; i++){
+        sum = sum+ arr[i];
+        console.log(sum)
+    }
 
+    if(sum> max){ max = sum;}
+
+    for(let i=n; i<arr.length; i++){
+        sum = sum - arr[i-n] + arr[i];
+        max = Math.max(max, sum);
+    }
+
+    return max;
 };
 
 

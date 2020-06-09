@@ -101,4 +101,31 @@ describe('Challenges Tests', ()=>{
             expect(isSubsequence).toBe(false);
         });
     });
+    describe('MaxSubarraySum Tests', ()=>{
+        it('Should find max 700', ()=>{
+            const max = challenges.maxSubarraySum([100,200,300,400], 2);
+
+            expect(max).toBe(700);
+        });
+        it('Should find max 39', ()=>{
+            const max = challenges.maxSubarraySum([1,4,2,10,23,3,1,0,20], 4);
+
+            expect(max).toBe(39);
+        });
+        it('Should find max 5', ()=>{
+            const max = challenges.maxSubarraySum([-3,4,0,-2,6,-1], 2);
+
+            expect(max).toBe(5);
+        });
+        it('Should find another max 5', ()=>{
+            const max = challenges.maxSubarraySum([3,-2,7,-4,1,-1,4,-2,1], 2);
+
+            expect(max).toBe(5);
+        });   
+        it('Should find max null', ()=>{
+            const max = challenges.maxSubarraySum([2,3], 3);
+
+            expect(max).toBe(null);
+        });
+    });
 });
