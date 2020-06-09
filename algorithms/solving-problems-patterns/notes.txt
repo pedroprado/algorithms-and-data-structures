@@ -32,7 +32,7 @@ Example: Functions that need to detect the same frequency of elements in more th
 
 2.Multiple Pointers 
 Very Efficient for solving problems with MINIMAL SPACE COMPLEXITY
-Creating pointers that corresponde to INDEX or POSITION
+Creating pointers that correspond to INDEX (or POSITION)
 Solve problems that need multiple references
 Example: SumZeroFunction => function that needs pointers on different sides of an array
 
