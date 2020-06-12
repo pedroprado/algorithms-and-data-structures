@@ -128,4 +128,41 @@ describe('Challenges Tests', ()=>{
             expect(max).toBe(null);
         });
     });
+    describe('MinSubArrayLen Tests', ()=>{
+        it('Should find min len equals to 2', ()=>{
+            const minLen = challenges.minSubarrayLen([2,3,1,2,4,3], 7);
+
+            expect(minLen).toBe(2);
+        });
+        it('Should find min len equals to 2, for n=9', ()=>{
+            const minLen = challenges.minSubarrayLen([2,1,6,5,4], 9);
+
+            expect(minLen).toBe(2);
+        });
+        it('Should find min len equals to 1', ()=>{
+            const minLen = challenges.minSubarrayLen([3,1,7,11,2,9,8,21,62,33,19], 52);
+
+            expect(minLen).toBe(1);
+        });
+        it('Should find min len equals to 3', ()=>{
+            const minLen = challenges.minSubarrayLen([1,4,16,22,5,7,8,9,10], 39);
+
+            expect(minLen).toBe(3);
+        });
+        it('Should find min len equals to 5', ()=>{
+            const minLen = challenges.minSubarrayLen([1,4,16,22,5,7,8,9,10], 55);
+
+            expect(minLen).toBe(5);
+        });
+        it('Should find min len equals to 2, for n=11', ()=>{
+            const minLen = challenges.minSubarrayLen([4,3,3,8,1,2,3], 11);
+
+            expect(minLen).toBe(2);
+        });
+        it('Should find min len equals to 0', ()=>{
+            const minLen = challenges.minSubarrayLen([1,4,16,22,5,7,8,9,10], 95);
+
+            expect(minLen).toBe(0);
+        });
+    });
 });

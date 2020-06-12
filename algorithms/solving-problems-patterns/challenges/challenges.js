@@ -134,7 +134,6 @@ const maxSubarraySum = (arr, n) =>{
     let sum = 0;
     for(let i=0; i<n; i++){
         sum = sum+ arr[i];
-        console.log(sum)
     }
 
     if(sum> max){ max = sum;}
@@ -147,7 +146,31 @@ const maxSubarraySum = (arr, n) =>{
     return max;
 };
 
+//Function that returns the MINIMAL LENGTH of contiguous subarray of which the sum is >= than N
+//SLIDING WINDOW PATTERN
+const minSubarrayLen = (arr, n) =>{
+    let minLen = arr.length;
+    
+    let windowSum = 0;
 
+    let start =0;
+    let end =0;
+
+    while(true){
+        if(windowSum < n && end < arr.length ){
+            windowSum = windowSum + arr[end];
+            end++;
+        }else if(windowSum >= n){
+            if(end-start < minLen){ minLen = end-start;}
+            windowSum = windowSum - arr[start];
+            start++;
+        }else{
+            break;
+        } 
+    }
+
+    return minLen === arr.length? 0 : minLen;
+};
 
 module.exports = {
     sameFrequency, 
@@ -155,5 +178,6 @@ module.exports = {
     areThereDuplicatesMP, 
     averagePair,
     isSubsequence,
-    maxSubarraySum
+    maxSubarraySum,
+    minSubarrayLen
 }
