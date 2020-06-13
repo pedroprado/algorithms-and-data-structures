@@ -172,6 +172,44 @@ const minSubarrayLen = (arr, n) =>{
     return minLen === arr.length? 0 : minLen;
 };
 
+//Function that accepts a string and returns the legth of the longest substring with all distinct characters
+//SLIDING WINDOW PATTERN
+//FREQUENCY COUNTER
+const findLongestSubstring = (str) =>{
+    if(str.length === 0) return 0;
+
+    let longest = 0;
+    
+    const seen = {}
+
+    let start = 0;
+    let end = 0;
+
+
+    while(end < str.length){
+        
+        if(!seen[str[end]]){
+            seen[str[end]] = 1;
+            end++;
+        }
+        else{
+            if(longest < (end-start)) {
+                longest = end-start;
+            }
+            delete seen[str[start]];
+            start++;
+        }
+    }
+    // console.log(seen)
+    if(end === str.length){ 
+        if(longest < (end-start)) {
+            longest = end-start;
+        }
+    }
+    return longest;
+
+};
+
 module.exports = {
     sameFrequency, 
     areThereDuplicatesFC, 
@@ -179,5 +217,6 @@ module.exports = {
     averagePair,
     isSubsequence,
     maxSubarraySum,
-    minSubarrayLen
+    minSubarrayLen,
+    findLongestSubstring
 }

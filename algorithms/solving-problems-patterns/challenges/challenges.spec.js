@@ -165,4 +165,41 @@ describe('Challenges Tests', ()=>{
             expect(minLen).toBe(0);
         });
     });
+    describe('FindLongestSubstring Tests', ()=>{
+        it('Should find 0', ()=>{
+            const longest = challenges.findLongestSubstring('');
+
+            expect(longest).toBe(0);
+        });
+        it('Should find 7', ()=>{
+            const longest = challenges.findLongestSubstring('rithmschool');
+
+            expect(longest).toBe(7);
+        });
+        it('Should find 6', ()=>{
+            const longest = challenges.findLongestSubstring('thisisawesome');
+
+            expect(longest).toBe(6);
+        });
+        it('Should find 7, for input', ()=>{
+            const longest = challenges.findLongestSubstring('thecatinthehat');
+
+            expect(longest).toBe(7);
+        });
+        it('Should find 1', ()=>{
+            const longest = challenges.findLongestSubstring('bbbbbbbb');
+
+            expect(longest).toBe(1);
+        });
+        it('Should find 8', ()=>{                      
+            const longest = challenges.findLongestSubstring('longestsubstring');
+
+            expect(longest).toBe(8);
+        });
+        it('Should find 6', ()=>{
+            const longest = challenges.findLongestSubstring('thisishowwedoit');
+
+            expect(longest).toBe(6);
+        });
+    });
 });
