@@ -37,6 +37,7 @@ const isPalindrome = str =>{
     return reversed;
 };
 
+//SOME RECURSIVE: 
 //Function that returns true if a single value in the array returns true when passed to the callback
 //Otherwise returns false
 const someRecursive = (arr, callBack) => {
@@ -48,11 +49,29 @@ const someRecursive = (arr, callBack) => {
     return result;
 };
 
+//FLATTEN
+//Function that accepts and array of arrays and returns a NEW ARRAY, with all values flattened
+const flatten = (arr)=>{
+
+    let newArray = null;
+
+    if(arr.length === 0) return [];
+
+    if(arr[0].length === undefined) newArray = [arr[0]];
+
+    if(arr[0].length >= 0) newArray = flatten(arr[0]);
+
+    const result = newArray.concat(flatten(arr.slice(1)))
+
+    return result;
+
+};
 
 module.exports = { 
     reverse,
     reverseIterative,
     isPalindrome,
-    someRecursive
+    someRecursive,
+    flatten
     
 }

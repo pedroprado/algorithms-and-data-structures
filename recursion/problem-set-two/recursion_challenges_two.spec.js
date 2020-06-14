@@ -61,4 +61,26 @@ describe('Recusion Challenges Two Tests', ()=>{
             expect(result).toBe(false);
         });
     });
+    describe('Flatten Function Tests', ()=>{
+        it('should flatten array 1', ()=>{
+            const flattened = challenges.flatten([1,2,3, [4,5]]);
+
+            expect(flattened).toStrictEqual([1,2,3,4,5]);
+        });
+        it('should flatten array 2', ()=>{
+            const flattened = challenges.flatten([1, [2, [3,4],[[5]] ] ]);
+
+            expect(flattened).toStrictEqual([1,2,3,4,5]);
+        });
+        it('should flatten array 3', ()=>{
+            const flattened = challenges.flatten([[1],[2],[3]]);
+
+            expect(flattened).toStrictEqual([1,2,3]);
+        });
+        it('should flatten array 4', ()=>{
+            const flattened = challenges.flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]);
+
+            expect(flattened).toStrictEqual([1,2,3]);
+        });
+    });
 });
