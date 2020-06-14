@@ -36,4 +36,29 @@ describe('Recusion Challenges Two Tests', ()=>{
             expect(isPalindrome).toBe(true);
         });
     });
+    describe('Some Recursive Tests', ()=>{
+        const isOdd = val => val%2 !== 0;
+        const isGreaterThanTen = val => val > 10;
+
+        it('should be odd', ()=>{
+            const result = challenges.someRecursive([1,2,3,4], isOdd);
+
+            expect(result).toBe(true);
+        });
+        it('should be odd too', ()=>{
+            const result = challenges.someRecursive([4,6,8,9], isOdd);
+
+            expect(result).toBe(true);
+        });
+        it('should not be odd', ()=>{
+            const result = challenges.someRecursive([4,6,8], isOdd);
+
+            expect(result).toBe(false);
+        });
+        it('should be greater than 10', ()=>{
+            const result = challenges.someRecursive([4,6,8], isGreaterThanTen);
+
+            expect(result).toBe(false);
+        });
+    });
 });
