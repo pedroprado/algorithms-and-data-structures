@@ -83,4 +83,11 @@ describe('Recusion Challenges Two Tests', ()=>{
             expect(flattened).toStrictEqual([1,2,3]);
         });
     });
+    describe('Capitalize First Tests', ()=>{
+        it('should capitalize first 1', ()=>{
+            const capitalized = challenges.capitalizeFirst(['car', 'taco', 'banana']);
+
+            expect(capitalized).toStrictEqual(['Car', 'Taco', 'Banana']);
+        });
+    });
 });

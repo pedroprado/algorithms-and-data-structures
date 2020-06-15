@@ -67,11 +67,32 @@ const flatten = (arr)=>{
 
 };
 
+
+//CAPITALIZE FIRST
+//Function that capitalizes the first letter of each string of an array of strings
+
+const capitalizeFirst = arr =>{
+    
+    let capitalized;
+
+    if(arr.length === 0) return [];
+
+    if(arr[0].length === 1){
+        capitalized = arr[0].toUpperCase();
+    }else{
+        capitalized = arr[0][0].toUpperCase().concat(arr[0].slice(1));
+    }
+
+    const result = [capitalized].concat(capitalizeFirst(arr.slice(1)));
+
+    return result;
+};
+
 module.exports = { 
     reverse,
     reverseIterative,
     isPalindrome,
     someRecursive,
-    flatten
-    
+    flatten,
+    capitalizeFirst 
 }
