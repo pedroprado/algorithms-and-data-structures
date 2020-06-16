@@ -90,4 +90,94 @@ describe('Recusion Challenges Two Tests', ()=>{
             expect(capitalized).toStrictEqual(['Car', 'Taco', 'Banana']);
         });
     });
+    describe('Nested Even Sum Tests', ()=>{
+        const obj1 = {
+            outer: 2,
+            obj: {
+              inner: 2,
+              otherObj: {
+                superInner: 2,
+                notANumber: true,
+                alsoNotANumber: "yup"
+              }
+            }
+        }
+          
+        const obj2 = {
+        a: 2,
+        b: {b: 2, bb: {b: 3, bb: {b: 2}}},
+        c: {c: {c: 2}, cc: 'ball', ccc: 5},
+        d: 1,
+        e: {e: {e: 2}, ee: 'car'}
+        };
+
+        it('should sum up to 6', ()=>{
+            const sum = challenges.nestedEvenSum(obj1);
+
+            expect(sum).toBe(6);
+        });
+        it('should sum up to 10', ()=>{
+            const sum = challenges.nestedEvenSum(obj2);
+
+            expect(sum).toBe(10);
+        });
+    });
+    describe('Capitalize Words Tests', ()=>{
+        it('should capitalize words',()=>{
+            const capitalized = challenges.capitalizeWords(['i', 'am', 'learning', 'recursion']);
+
+            expect(capitalized).toStrictEqual( ['I', 'AM', 'LEARNING', 'RECURSION']);
+        });
+    });
+    describe('Stringfy Numbers Tests', ()=>{
+        let obj1 = {
+            num: 1,
+            test: [],
+            data: {
+                val: 4,
+                info: {
+                    isRight: true,
+                    random: 66
+                }
+            }
+        };
+        let expected = {
+            num: "1",
+            test: [],
+            data: {
+                val: "4",
+                info: {
+                    isRight: true,
+                    random: "66"
+                }
+            }
+        };
+        it('should stringfy numbers',()=>{
+            const stringfied = challenges.stringifyNumbers(obj1);
+
+            expect(stringfied).toStrictEqual(expected);
+        });
+    });
+    describe('Collect Strings Tests', ()=>{
+        const obj = {
+            stuff: "foo",
+            data: {
+                val: {
+                    thing: {
+                        info: "bar",
+                        moreInfo: {
+                            evenMoreInfo: {
+                                weMadeIt: "baz"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        it('should collect strings',()=>{
+            const collected = challenges.collectStrings(obj);
+
+            expect(collected).toStrictEqual(['foo', 'bar', 'baz']);
+        });
+    }); 
 });
